@@ -16,6 +16,7 @@ function MovieCard({
         {' '}
         {vote_average}
       </p>
+      <button type="button"> Adicionar ao carrinho </button>
     </>
   );
 }

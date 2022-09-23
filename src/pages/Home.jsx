@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import Movie from '../components/MovieCard';
 
-const API_URL = 'https://api.themoviedb.org/3/movie/popular?api_key=64f5ed0cccfd7041864d0b04ce4869c2';
+const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`;
 
 function Home() {
   const [movies, setMovies] = useState([]);
