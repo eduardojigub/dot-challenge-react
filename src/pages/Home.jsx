@@ -1,30 +1,43 @@
 import { React, useState, useEffect } from 'react';
-import Movie from '../components/MovieCard';
+import { Grid } from '@mui/material';
+import { Container } from '@mui/system';
+import axios from 'axios';
+import MovieCard from '../components/MovieCard';
+import Navbar from '../components/Navbar';
 
 const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`;
 
 function Home() {
   const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    fetch(API_URL)
+  const getMovies = () => {
+    axios.get(API_URL)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setMovies(data.results);
       });
+  };
+
+  useEffect(() => {
+    getMovies();
   }, []);
 
   return (
     <div>
-      {movies.map((movie) => (
-        <Movie
-          key={movie.id}
-          title={movie.title}
-          poster_path={movie.poster_path}
-          vote_average={movie.vote_average}
-        />
-      ))}
+      <Navbar />
+      <Container maxWidth="xl">
+        <Grid container>
+          {movies.map((movie) => (
+            <Grid item xs={3}>
+              <MovieCard
+                key={movie.id}
+                title={movie.title}
+                image={movie.poster_path}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </div>
   );
 }
