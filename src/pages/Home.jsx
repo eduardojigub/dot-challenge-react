@@ -26,13 +26,14 @@ function Home() {
     <div>
       <Navbar />
       <Container maxWidth="xl">
-        <Grid container>
+        <Grid container spacing={3}>
           {movies.map((movie) => (
             <Grid item xs={3}>
               <MovieCard
                 key={movie.id}
                 title={movie.title}
                 image={movie.poster_path}
+                rating={movie.vote_average}
               />
             </Grid>
           ))}

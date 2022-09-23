@@ -8,22 +8,24 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const API_IMG = 'https://image.tmdb.org/t/p/w185/';
+const API_IMG = 'https://image.tmdb.org/t/p/w500/';
 
 function MovieCard({
-  title, image,
+  title, image, rating,
 }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 180 }}>
       <CardMedia
         component="img"
-        height="140"
         image={API_IMG + image}
-        alt="green iguana"
+        alt={title}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {title}
+        </Typography>
+        <Typography gutterBottom variant="h5" component="div">
+          {rating}
         </Typography>
       </CardContent>
       <CardActions>
@@ -36,7 +38,7 @@ function MovieCard({
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  // vote_average: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired,
 };
 
 export default MovieCard;
