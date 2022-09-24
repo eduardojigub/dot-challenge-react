@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useState } from 'react';
 import './Checkout.css';
+import formatCurrency from 'format-currency';
 import InputMask from 'react-input-mask';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartContext from '../context/cart/CartContext';
@@ -15,6 +16,7 @@ function Checkout() {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
+  const opts = { format: '%s%v', symbol: 'R$' };
   //  const [isValid, setIsValid] = useState(false);
 
   // const checkoutClick = () => {
@@ -77,7 +79,14 @@ function Checkout() {
               <ul className="list-group mb-3">
                 <li className="list-group-item d-flex justify-content-between">
                   <span>Total da sua compra (BRL)</span>
-                  <strong>R$12</strong>
+                  <strong>
+                    {formatCurrency(
+                      cartItems
+                        .reduce((amount, item) => Number(item
+                          .vote_count.toFixed(2) * 0.01) + amount, 0),
+                      opts,
+                    )}
+                  </strong>
                 </li>
               </ul>
             </div>

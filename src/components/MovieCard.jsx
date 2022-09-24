@@ -35,18 +35,18 @@ function MovieCard({
             {movie.vote_average}
           </Typography>
           <Typography mt={1} component="div">
-            R$ 79.99
+            R$
+            {movie.vote_count.toFixed(2) * 0.01}
           </Typography>
         </Box>
       </CardContent>
-      <CardActions>
+      <CardActions justifyContent="center" centealignItems="center">
         <Button
           onClick={() => addToCart(movie)}
           variant="contained"
           size="small"
         >
           Adicionar ao carrinho
-
         </Button>
       </CardActions>
     </Card>

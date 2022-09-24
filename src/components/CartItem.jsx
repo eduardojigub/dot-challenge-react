@@ -15,7 +15,7 @@ function CartItem({ item }) {
       <div>
         {item.title}
         {' '}
-        {formatCurrency(`${item.price}`, opts)}
+        {formatCurrency(`${item.vote_count.toFixed(2) * 0.01}`, opts)}
       </div>
       <button
         type="button"

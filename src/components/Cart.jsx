@@ -38,7 +38,8 @@ function Cart() {
             <div />
             <div style={{ marginLeft: 5 }}>
               {formatCurrency(
-                cartItems.reduce((amount, item) => item.price + amount, 0),
+                cartItems
+                  .reduce((amount, item) => Number(item.vote_count.toFixed(2) * 0.01) + amount, 0),
                 opts,
               )}
             </div>
