@@ -33,7 +33,7 @@ function Cart() {
             )}
           </div>
           <div className="Cart__cartTotal">
-            <div>Cart Total</div>
+            <div>Total da sua compra</div>
             <div />
             <div style={{ marginLeft: 5 }}>
               {formatCurrency(

@@ -28,11 +28,9 @@ function Search() {
   return (
     <Container maxWidth="xl">
       <Typography borderRadius="10px" backgroundColor="#021E39" color="#f7d354" variant="h4" mt={5} align="center" margin="75px">
-        `Resultados da sua busca para:
-        $
-        {query}
+        Resultados da sua busca para:
         {' '}
-        `
+        {query}
       </Typography>
       <Grid mt={5} container spacing={3}>
         {movies.length === 0 ? (

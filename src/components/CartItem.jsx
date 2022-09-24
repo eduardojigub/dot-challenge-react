@@ -7,7 +7,6 @@ import CartContext from '../context/cart/CartContext';
 const API_IMG = 'https://image.tmdb.org/t/p/w500/';
 
 function CartItem({ item }) {
-  console.log(`Entrou aqui${item.title}`);
   const { removeItem } = useContext(CartContext);
   const opts = { format: '%s%v', symbol: 'R$' };
   return (
@@ -23,7 +22,7 @@ function CartItem({ item }) {
         className="CartItem__button"
         onClick={() => removeItem(item.id)}
       >
-        Remove
+        Remover
       </button>
     </li>
   );
