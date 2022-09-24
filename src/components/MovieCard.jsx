@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { FaStar } from 'react-icons/fa';
 
 const API_IMG = 'https://image.tmdb.org/t/p/w500/';
 
@@ -21,11 +22,15 @@ function MovieCard({
         alt={movie.title}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography variant="h5" component="div">
           {movie.title}
         </Typography>
+        <Typography variant="h5" component="div">
+          <FaStar />
+          {movie.vote_average}
+        </Typography>
         <Typography gutterBottom variant="h5" component="div">
-          {movie.rating}
+          R$79.99
         </Typography>
       </CardContent>
       <CardActions>
