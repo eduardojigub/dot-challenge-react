@@ -23,21 +23,21 @@ function MovieCard({
         alt={movie.title}
       />
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center" flexDirection="column">
           <Typography variant="h6" component="div">
             {movie.title}
           </Typography>
-          <Typography component="div">
+          <Typography mt={1} component="div">
             <FaStar />
             {movie.vote_average}
           </Typography>
-          <Typography gutterBottom component="div">
+          <Typography mt={1} component="div">
             R$ 79.99
           </Typography>
         </Box>
       </CardContent>
       <CardActions>
-        <Button size="small">Adicionar ao carrinho</Button>
+        <Button variant="contained" size="small">Adicionar ao carrinho</Button>
       </CardActions>
     </Card>
   );
