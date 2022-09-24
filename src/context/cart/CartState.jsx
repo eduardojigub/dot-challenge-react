@@ -25,6 +25,7 @@ function CartState({ children }) {
 
   const removeItem = (id) => {
     dispatch({ type: REMOVE_ITEM, payload: id });
+    toast.error('Produto removido');
   };
 
   return (
