@@ -25,6 +25,7 @@ nav {
 
 .input__wrapper form{
   display: flex;
+  padding: 2px;
   align-items: center;
   justify-content: center;
   border-radius: 25px;
