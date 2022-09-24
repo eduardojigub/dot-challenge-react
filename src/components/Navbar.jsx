@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BiCameraMovie, BiSearchAlt2 } from 'react-icons/bi';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 import './Navbar.css';
 
@@ -37,6 +38,9 @@ function Navbar() {
           <BiSearchAlt2 />
         </button>
       </form>
+      <span>
+        <AiOutlineShoppingCart />
+      </span>
     </nav>
   );
 }

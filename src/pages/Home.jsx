@@ -2,7 +2,6 @@
 /* eslint-disable no-restricted-syntax */
 import { React, useState, useEffect } from 'react';
 import { Grid } from '@mui/material';
-import Typography from '@mui/material/Typography';
 import { Container } from '@mui/system';
 import MovieCard from '../components/MovieCard';
 import Skeletons from '../components/Skeletons';
@@ -25,10 +24,7 @@ function Home() {
   return (
     <div>
       <Container maxWidth="xl">
-        <Typography variant="h2">
-          Filmes populares
-        </Typography>
-        <Grid container spacing={3}>
+        <Grid mt={5} container spacing={3}>
           {movies.length === 0 ? (
             <Skeletons />
           ) : (
