@@ -1,5 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import { Container } from '@mui/system';
 import MovieCard from '../components/MovieCard';
 
 const searchURL = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query`;
@@ -22,17 +25,21 @@ function Search() {
   }, [query]);
 
   return (
-    <div className="container">
-      <h2 className="title">
+    <Container maxWidth="xl">
+      <Typography variant="h2">
         Resultados para:
-        {' '}
-        <span className="query-text">{query}</span>
-      </h2>
-      <div className="movies-container">
-        {movies.length > 0
-          && movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
-      </div>
-    </div>
+      </Typography>
+      <Grid container spacing={3}>
+        {movies.map((movie) => (
+          <Grid item xs={3} key={movie.id}>
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 }
 
