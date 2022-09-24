@@ -8,6 +8,8 @@ import Search from './pages/Search';
 import CartState from './context/cart/CartState';
 import Checkout from './pages/Checkout';
 
+import 'react-toastify/dist/ReactToastify.min.css';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

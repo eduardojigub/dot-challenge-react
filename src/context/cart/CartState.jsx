@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable react/prop-types */
 import { React, useReducer } from 'react';
+import { toast } from 'react-toastify';
 import CartContext from './CartContext';
 import CartReducer from './CartReducer';
 import { SHOW_HIDE_CART, ADD_TO_CART, REMOVE_ITEM } from '../Types';
@@ -15,6 +16,7 @@ function CartState({ children }) {
 
   const addToCart = (item) => {
     dispatch({ type: ADD_TO_CART, payload: item });
+    toast.success('Produto adicionado com sucesso');
   };
 
   const showHideCart = () => {

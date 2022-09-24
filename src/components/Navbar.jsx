@@ -26,8 +26,6 @@ function Navbar() {
         <h2>
           <Link to="/">
             <BiCameraMovie />
-            {'  '}
-            BlockBuster
           </Link>
         </h2>
       </div>

@@ -40,7 +40,7 @@ function MovieCard({
           </Typography>
         </Box>
       </CardContent>
-      <CardActions justifyContent="center" centealignItems="center">
+      <CardActions>
         <Button
           onClick={() => addToCart(movie)}
           variant="contained"
