@@ -31,6 +31,7 @@ function MovieCard({
           </Typography>
           <Typography mt={1} component="div">
             <FaStar />
+            {'  '}
             {movie.vote_average}
           </Typography>
           <Typography mt={1} component="div">
