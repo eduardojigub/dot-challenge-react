@@ -1,7 +1,6 @@
 import { React, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BiCameraMovie, BiSearchAlt2 } from 'react-icons/bi';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
 import CartContext from '../context/cart/CartContext';
 
 import './Navbar.css';
@@ -43,14 +42,20 @@ function Navbar() {
           <BiSearchAlt2 onClick={showHideCart} />
         </button>
       </form>
-      <span>
-        <AiOutlineShoppingCart />
-      </span>
-      {cartItems.length > 0 && (
-      <div className="item__count">
-        <span>{cartItems.length}</span>
+      <div className="nav__right">
+        <div className="cart__icon">
+          <i
+            className="fa fa-shopping-cart"
+            aria-hidden="true"
+            onClick={showHideCart}
+          />
+          {cartItems.length > 0 && (
+            <div className="item__count">
+              <span>{cartItems.length}</span>
+            </div>
+          )}
+        </div>
       </div>
-      )}
     </nav>
   );
 }
