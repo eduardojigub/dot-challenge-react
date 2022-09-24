@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 import React from 'react';
-import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -11,21 +11,21 @@ import Typography from '@mui/material/Typography';
 const API_IMG = 'https://image.tmdb.org/t/p/w500/';
 
 function MovieCard({
-  title, image, rating,
+  movie,
 }) {
   return (
     <Card sx={{ maxWidth: 180 }}>
       <CardMedia
         component="img"
-        image={API_IMG + image}
-        alt={title}
+        image={API_IMG + movie.poster_path}
+        alt={movie.title}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {title}
+          {movie.title}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-          {rating}
+          {movie.rating}
         </Typography>
       </CardContent>
       <CardActions>
@@ -35,12 +35,4 @@ function MovieCard({
   );
 }
 
-MovieCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
-};
-
 export default MovieCard;
-
-// <img src={API_IMG + poster_path} alt={title} />
