@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -9,12 +9,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 import { FaStar } from 'react-icons/fa';
+import CartContext from '../context/cart/CartContext';
 
 const API_IMG = 'https://image.tmdb.org/t/p/w500/';
 
 function MovieCard({
   movie,
 }) {
+  const { addToCart } = useContext(CartContext);
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -37,7 +39,14 @@ function MovieCard({
         </Box>
       </CardContent>
       <CardActions>
-        <Button variant="contained" size="small">Adicionar ao carrinho</Button>
+        <Button
+          onClick={() => addToCart(movie)}
+          variant="contained"
+          size="small"
+        >
+          Adicionar ao carrinho
+
+        </Button>
       </CardActions>
     </Card>
   );
