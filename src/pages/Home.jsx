@@ -2,6 +2,7 @@
 /* eslint-disable no-restricted-syntax */
 import { React, useState, useEffect } from 'react';
 import { Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import { Container } from '@mui/system';
 import MovieCard from '../components/MovieCard';
 
@@ -10,12 +11,10 @@ const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.en
 function Home() {
   const [movies, setMovies] = useState([]);
 
-  const getMovies = () => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setMovies(data.results);
-      });
+  const getMovies = async () => {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+    setMovies(data.results);
   };
 
   useEffect(() => {
@@ -25,6 +24,9 @@ function Home() {
   return (
     <div>
       <Container maxWidth="xl">
+        <Typography variant="h2">
+          Filmes populares
+        </Typography>
         <Grid container spacing={3}>
           {movies.map((movie) => (
             <Grid item xs={3} key={movie.id}>

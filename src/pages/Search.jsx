@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 
-const searchURL = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query`;
+const searchURL = 'https://api.themoviedb.org/3/search/movie?api_key=64f5ed0cccfd7041864d0b04ce4869c2&query';
 
 function Search() {
   const [searchParams] = useSearchParams();
