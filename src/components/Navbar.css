@@ -23,17 +23,16 @@ nav {
   flex: 1;
 }
 
-.input__wrapper {
+.input__wrapper form{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
   border-radius: 25px;
   background-color: white;
 }
 
 .input__wrapper input {
-  width: 100%;
+  width: 90%;
   padding: 0 10px;
   border: none;
   display: block;
@@ -42,6 +41,15 @@ nav {
 .input__wrapper input:focus,
 input:active {
   outline: none;
+}
+.input__wrapper button {
+  background-color: #f7d354;
+    border: 2px solid #f7d354;
+    border-radius: 4px;
+    color: #000;
+    font-size: 1.5rem;
+    display: flex;
+    cursor: pointer;
 }
 
 .nav__right {
@@ -68,7 +76,7 @@ input:active {
   background-color: red;
   z-index: 10;
   border-radius: 50%;
-  font-size: 10px;
+  font-size: 14px;
   height: 14px;
   width: 14px;
   top: -50%;

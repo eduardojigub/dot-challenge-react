@@ -31,17 +31,21 @@ function Navbar() {
           </Link>
         </h2>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Busque um filme"
-          onChange={(e) => setSearch(e.target.value)}
-          value={search}
-        />
-        <button type="submit">
-          <BiSearchAlt2 onClick={showHideCart} />
-        </button>
-      </form>
+      <div className="nav__middle">
+        <div className="input__wrapper">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Digite aqui para buscar um filme"
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+            />
+            <button type="submit">
+              <BiSearchAlt2 />
+            </button>
+          </form>
+        </div>
+      </div>
       <div className="nav__right">
         <div className="cart__icon">
           <i
