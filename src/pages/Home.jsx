@@ -5,6 +5,7 @@ import { Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/system';
 import MovieCard from '../components/MovieCard';
+import Skeletons from '../components/Skeletons';
 
 const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`;
 
@@ -28,14 +29,18 @@ function Home() {
           Filmes populares
         </Typography>
         <Grid container spacing={3}>
-          {movies.map((movie) => (
-            <Grid item xs={3} key={movie.id}>
-              <MovieCard
-                key={movie.id}
-                movie={movie}
-              />
-            </Grid>
-          ))}
+          {movies.length === 0 ? (
+            <Skeletons />
+          ) : (
+            movies.map((movie) => (
+              <Grid item xs={12} sm={6} md={4} lg={2} key={movie.id}>
+                <MovieCard
+                  key={movie.id}
+                  movie={movie}
+                />
+              </Grid>
+            ))
+          )}
         </Grid>
       </Container>
     </div>
