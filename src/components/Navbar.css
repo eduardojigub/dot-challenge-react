@@ -1,55 +1,76 @@
-#navbar {
-    display: flex;
-    height: 60px;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background-color: #021E39;
-  }
-  
-  #navbar h2 a {
-    display: flex;
-    text-decoration: none;
-    align-items: center;
-    gap: 0.5rem;
-    max-height: 80px;
-    margin-left: 15px;
-  }
-  
-  #navbar form {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  #navbar input {
-    padding: 0.2rem 0.8rem;
-    border-radius: 4px;
-    border: none;
-    align-items: center;
-  }
-  
-  #navbar form button {
-    background-color: #f7d354;
-    border: 2px solid #f7d354;
-    border-radius: 4px;
-    color: #000;
-    padding: 0.3rem;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-right: 45px;
-  }
+nav {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: #021E39;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  gap: 0.5rem;
+}
 
-  #navbar span {
-    background-color: #f7d354;
-    border: 2px solid #f7d354;
-    border-radius: 4px;
-    color: #000;
-    padding: 0.3rem;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-right: 45px;
-  }
+.nav__left {
+  flex: 1;
+}
+
+.nav__middle {
+  color: gray;
+
+  flex: 1;
+}
+
+.input__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.input__wrapper input {
+  width: 100%;
+  padding: 0 10px;
+  border: none;
+  display: block;
+}
+
+.input__wrapper input:focus,
+input:active {
+  outline: none;
+}
+
+.nav__right {
+  flex: 1;
+}
+
+.cart__icon {
+  position: relative;
+  width: max-content;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart__icon i {
+  cursor: pointer;
+}
+
+.item__count {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  background-color: red;
+  z-index: 10;
+  border-radius: 50%;
+  font-size: 10px;
+  height: 14px;
+  width: 14px;
+  top: -50%;
+  right: -50%;
+}

@@ -1,7 +1,8 @@
-import { React, useState } from 'react';
+import { React, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BiCameraMovie, BiSearchAlt2 } from 'react-icons/bi';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import CartContext from '../context/cart/CartContext';
 
 import './Navbar.css';
 
@@ -18,15 +19,19 @@ function Navbar() {
     setSearch('');
   };
 
+  const { cartItems, showHideCart } = useContext(CartContext);
+
   return (
-    <nav id="navbar">
-      <h2>
-        <Link to="/">
-          <BiCameraMovie />
-          {' '}
-          BlockBuster
-        </Link>
-      </h2>
+    <nav>
+      <div className="nav__left">
+        <h2>
+          <Link to="/">
+            <BiCameraMovie />
+            {'  '}
+            BlockBuster
+          </Link>
+        </h2>
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -35,12 +40,17 @@ function Navbar() {
           value={search}
         />
         <button type="submit">
-          <BiSearchAlt2 />
+          <BiSearchAlt2 onClick={showHideCart} />
         </button>
       </form>
       <span>
         <AiOutlineShoppingCart />
       </span>
+      {cartItems.length > 0 && (
+      <div className="item__count">
+        <span>{cartItems.length}</span>
+      </div>
+      )}
     </nav>
   );
 }
