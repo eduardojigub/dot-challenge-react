@@ -7,27 +7,44 @@ import CartItem from '../components/CartItem';
 
 function Checkout() {
   const [name, setName] = useState('');
+  const [cpf, setCPF] = useState('');
+  const [celular, setCelular] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
-  const [zip, setZip] = useState(0);
-  const [isValid, setIsValid] = useState(false);
+  const [zip, setZip] = useState('');
+  //  const [isValid, setIsValid] = useState(false);
 
-  const checkoutClick = () => {
-    if (name.length > 0
-      && email.length > 0
-      && address.length > 0
-      && city.length > 0
-      && state.length > 0) {
-      return setIsValid(false);
-    }
-    return setIsValid(true);
-  };
+  // const checkoutClick = () => {
+  //   if (name.length > 0
+  //     && email.length > 5) {
+  //     return setIsValid(false);
+  //   }
+  //   return setIsValid(true);
+  // };
 
-  React.useEffect(() => {
-    checkoutClick();
-  }, []);
+  // React.useEffect(() => {
+  //   checkoutClick();
+  // }, [name.length, email.length]);
+
+  (function () {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }, false);
+      });
+  }());
 
   const { cartItems } = useContext(CartContext);
 
@@ -38,12 +55,11 @@ function Checkout() {
           <div className="row">
             <div className="col-md-4 order-md-2 mb-4">
               <h4 className="d-flex justify-content-between align-items-center mb-3">
-                <span className="text-muted">Your cart</span>
-                <span className="badge badge-secondary badge-pill">3</span>
+                <span className="text-muted">Carrinho de Compras</span>
               </h4>
               {cartItems.length === 0
                 ? (
-                  <h4>Cart is Empty</h4>
+                  <h4>Seu carrinho está vazio!</h4>
                 ) : (
                   <ul>
                     {cartItems.map((item) => (
@@ -57,26 +73,18 @@ function Checkout() {
                   <strong>R$12</strong>
                 </li>
               </ul>
-              <button
-                className="btn btn-primary btn-lg btn-block"
-                type="button"
-                disabled={isValid}
-              >
-                Finalizar Compra
-              </button>
             </div>
             <div className="col-md-8 order-md-1">
-              <h4 className="mb-3">Finalize sua compra</h4>
+              <h4 className="mb-3">Revise seu pedido e finalize sua compra</h4>
               <form className="needs-validation" noValidate>
                 <div className="row">
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="firstName">Nome Completo</label>
-                    <span className="text-muted">(Obrigatório)</span>
+                    <label htmlFor="validationCustom01" className="form-label">Nome Completo</label>
                     <input
                       type="text"
                       className="form-control"
-                      id="firstName"
-                      placeholder=""
+                      id="validationCustom01"
+                      placeholder="Digite seu nome"
                       required
                       onChange={(e) => setName(e.target.value)}
                       value={name}
@@ -86,11 +94,35 @@ function Checkout() {
                     </div>
                   </div>
                 </div>
+                <div className="col-md-5 mb-3">
+                  <label htmlFor="zip">CPF</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="zip"
+                    placeholder="000.123.456-78"
+                    required
+                    onChange={(e) => setCPF(e.target.value)}
+                    value={cpf}
+                  />
+                  <div className="invalid-feedback">Campo CPF é obrigatório.</div>
+                </div>
+                <div className="col-md-4 mb-3">
+                  <label htmlFor="zip">Celular</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="zip"
+                    placeholder="(XX) 99999-0000"
+                    required
+                    onChange={(e) => setCelular(e.target.value)}
+                    value={celular}
+                  />
+                  <div className="invalid-feedback">Campo é obrigatório</div>
+                </div>
                 <div className="mb-3">
                   <label htmlFor="email">
                     Email
-                    {' '}
-                    <span className="text-muted">(Obrigatório)</span>
                   </label>
                   <input
                     type="email"
@@ -102,7 +134,7 @@ function Checkout() {
                     value={email}
                   />
                   <div className="invalid-feedback">
-                    Por favor, digite um endereço de e-mail válido.
+                    O campo de e-mail é obrigatório
                   </div>
                 </div>
                 <div className="mb-3">
@@ -111,12 +143,13 @@ function Checkout() {
                     type="text"
                     className="form-control"
                     id="address"
+                    placeholder="Digite seu endereço completo"
                     required
                     onChange={(e) => setAddress(e.target.value)}
                     value={address}
                   />
                   <div className="invalid-feedback">
-                    Please enter your shipping address.
+                    O campo de endereço é obrigatório
                   </div>
                 </div>
                 <div className="row">
@@ -126,7 +159,7 @@ function Checkout() {
                       type="text"
                       className="form-control"
                       id="zip"
-                      placeholder=""
+                      placeholder="Sua cidade"
                       required
                       onChange={(e) => setCity(e.target.value)}
                       value={city}
@@ -139,7 +172,7 @@ function Checkout() {
                       type="text"
                       className="form-control"
                       id="zip"
-                      placeholder=""
+                      placeholder="Estado"
                       required
                       onChange={(e) => setState(e.target.value)}
                       value={state}
@@ -152,7 +185,7 @@ function Checkout() {
                       type="text"
                       className="form-control"
                       id="zip"
-                      placeholder=""
+                      placeholder="60160-000"
                       required
                       onChange={(e) => setZip(e.target.value)}
                       value={zip}
@@ -160,6 +193,12 @@ function Checkout() {
                     <div className="invalid-feedback">CEP obrigatório</div>
                   </div>
                 </div>
+                <button
+                  className="btn btn-primary btn-lg btn-block"
+                  type="submit"
+                >
+                  Finalizar Compra
+                </button>
               </form>
             </div>
           </div>

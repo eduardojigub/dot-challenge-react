@@ -24,7 +24,7 @@ function Cart() {
           </div>
           <div className="cart__innerWrapper">
             {cartItems.length === 0 ? (
-              <h4>Cart is Empty</h4>
+              <h4>Carrinho Vazio</h4>
             ) : (
               <ul>
                 {cartItems.map((item) => (
@@ -44,8 +44,8 @@ function Cart() {
             </div>
           </div>
           <Link to="/checkout">
-            <button type="button" aria-label="Finalizar Compra">
-              Finalizar Pedido
+            <button type="button" className="btn btn-primary" aria-label="Finalizar Compra">
+              Fazer Pagamento
             </button>
           </Link>
         </div>
