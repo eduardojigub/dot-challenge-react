@@ -6,6 +6,7 @@ import App from './App';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import CartState from './context/cart/CartState';
+import Checkout from './pages/Checkout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +17,7 @@ root.render(
           <Route element={<App />}>
             <Route path="/" element={<Home />} />
             <Route path="search" element={<Search />} />
+            <Route path="checkout" element={<Checkout />} />
           </Route>
         </Routes>
       </CartState>

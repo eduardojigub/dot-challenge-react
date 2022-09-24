@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import './Cart.css';
 import formatCurrency from 'format-currency';
+import { Link } from 'react-router-dom';
 import CartContext from '../context/cart/CartContext';
 import CartItem from './CartItem';
 
@@ -42,6 +43,11 @@ function Cart() {
               )}
             </div>
           </div>
+          <Link to="/checkout">
+            <button type="button" aria-label="Finalizar Compra">
+              Finalizar Pedido
+            </button>
+          </Link>
         </div>
       )}
     </>

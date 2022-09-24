@@ -12,6 +12,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "bootstrap": "^5.2.1",
     "currency-formatter": "^1.5.9",
     "format-currency": "^1.0.0",
     "node-polyfill-webpack-plugin": "^2.0.1",
