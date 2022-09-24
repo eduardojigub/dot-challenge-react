@@ -7,7 +7,7 @@ import CartItem from './CartItem';
 
 function Cart() {
   const { showCart, cartItems, showHideCart } = useContext(CartContext);
-  const opts = { format: '%s%v', symbol: '$' };
+  const opts = { format: '%s%v', symbol: 'R$' };
 
   return (
     <>
