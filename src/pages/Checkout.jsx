@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useState } from 'react';
 import './Checkout.css';
+import InputMask from 'react-input-mask';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartContext from '../context/cart/CartContext';
 import CartItem from '../components/CartItem';
@@ -27,6 +28,12 @@ function Checkout() {
   // React.useEffect(() => {
   //   checkoutClick();
   // }, [name.length, email.length]);
+
+  const validateEmail = () => String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    );
 
   (function () {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -96,10 +103,11 @@ function Checkout() {
                 </div>
                 <div className="col-md-5 mb-3">
                   <label htmlFor="zip">CPF</label>
-                  <input
+                  <InputMask
                     type="text"
                     className="form-control"
                     id="zip"
+                    mask="999.999.999-99"
                     placeholder="000.123.456-78"
                     required
                     onChange={(e) => setCPF(e.target.value)}
@@ -109,10 +117,11 @@ function Checkout() {
                 </div>
                 <div className="col-md-4 mb-3">
                   <label htmlFor="zip">Celular</label>
-                  <input
-                    type="number"
+                  <InputMask
+                    type="text"
                     className="form-control"
                     id="zip"
+                    mask="(99) 99999-9999"
                     placeholder="(XX) 99999-0000"
                     required
                     onChange={(e) => setCelular(e.target.value)}
@@ -130,7 +139,7 @@ function Checkout() {
                     id="email"
                     placeholder="voce@exemplo.com"
                     required
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(validateEmail(e.target.value))}
                     value={email}
                   />
                   <div className="invalid-feedback">
@@ -181,10 +190,11 @@ function Checkout() {
                   </div>
                   <div className="col-md-3 mb-3">
                     <label htmlFor="zip">CEP</label>
-                    <input
+                    <InputMask
                       type="text"
                       className="form-control"
                       id="zip"
+                      mask="99999-999"
                       placeholder="60160-000"
                       required
                       onChange={(e) => setZip(e.target.value)}
