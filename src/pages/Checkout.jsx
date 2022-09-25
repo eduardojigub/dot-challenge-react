@@ -19,19 +19,18 @@ function Checkout() {
   const [zip, setZip] = useState('');
   const opts = { format: '%s%v', symbol: 'R$' };
   const [buttonPopup, setButtonPopup] = useState(false);
-  //  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState(false);
 
-  // const checkoutClick = () => {
-  //   if (name.length > 0
-  //     && email.length > 5) {
-  //     return setIsValid(false);
-  //   }
-  //   return setIsValid(true);
-  // };
+  const checkoutClick = () => {
+    if (name.length > 1) {
+      return setIsValid(false);
+    }
+    return setIsValid(true);
+  };
 
-  // React.useEffect(() => {
-  //   checkoutClick();
-  // }, [name.length, email.length]);
+  React.useEffect(() => {
+    checkoutClick();
+  }, [name.length]);
 
   const validateEmail = () => String(email)
     .toLowerCase()
@@ -56,6 +55,11 @@ function Checkout() {
         }, false);
       });
   }());
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setButtonPopup(true);
+  };
 
   const { cartItems } = useContext(CartContext);
 
@@ -94,7 +98,7 @@ function Checkout() {
             </div>
             <div className="col-md-8 order-md-1">
               <h4 className="mb-3 mt-5">Revise seu pedido e finalize sua compra</h4>
-              <form className="needs-validation" noValidate>
+              <form onSubmit={handleSubmit} className="needs-validation" noValidate>
                 <div className="row">
                   <div className="col-md-6 mb-3">
                     <label htmlFor="validationCustom01" className="form-label">Nome Completo</label>
@@ -217,7 +221,7 @@ function Checkout() {
                 <button
                   className="btn btn-primary btn-lg btn-block"
                   type="submit"
-                  onClick={() => setButtonPopup(true)}
+                  disabled={isValid}
                 >
                   Finalizar Compra
                 </button>
