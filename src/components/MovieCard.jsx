@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import formatCurrency from 'format-currency';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
@@ -12,6 +13,7 @@ import { FaStar } from 'react-icons/fa';
 import CartContext from '../context/cart/CartContext';
 
 const API_IMG = 'https://image.tmdb.org/t/p/w500/';
+const opts = { format: '%s%v', symbol: 'R$' };
 
 function MovieCard({
   movie,
@@ -35,8 +37,7 @@ function MovieCard({
             {movie.vote_average}
           </Typography>
           <Typography mt={1} component="div">
-            R$
-            {movie.vote_count.toFixed(2) * 0.01}
+            {formatCurrency(`${movie.vote_count.toFixed(2) * 0.01}`, opts)}
           </Typography>
         </Box>
       </CardContent>
