@@ -20,7 +20,7 @@ function Checkout() {
   const opts = { format: '%s%v', symbol: 'R$' };
   const [buttonPopup, setButtonPopup] = useState(false);
   const [isValid, setIsValid] = useState(false);
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, clearCart } = useContext(CartContext);
 
   const checkoutClick = () => {
     if (name.length > 1 && cartItems.length > 0) {
@@ -222,6 +222,7 @@ function Checkout() {
                   className="btn btn-primary btn-lg btn-block"
                   type="submit"
                   disabled={isValid}
+                  onClick={clearCart}
                 >
                   Finalizar Compra
                 </button>

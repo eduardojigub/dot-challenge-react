@@ -1,4 +1,6 @@
-import { SHOW_HIDE_CART, ADD_TO_CART, REMOVE_ITEM } from '../Types';
+import {
+  SHOW_HIDE_CART, ADD_TO_CART, REMOVE_ITEM, CLEAR_CART,
+} from '../Types';
 
 const CartReducer = (state, action) => {
   switch (action.type) {
@@ -22,7 +24,12 @@ const CartReducer = (state, action) => {
         ),
       };
     }
-
+    case CLEAR_CART: {
+      return {
+        cartItems: []
+        ,
+      };
+    }
     default:
       return state;
   }

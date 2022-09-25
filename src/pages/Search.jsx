@@ -36,6 +36,7 @@ function Search() {
       </Typography>
       <Grid mt={5} container spacing={3}>
         {isLoading && <Skeletons />}
+        {isLoading && <h1>Filme não encontrado</h1>}
         {movies.map((movie) => (
           <Grid item xs={12} sm={6} md={4} lg={2} key={movie.id}>
             <MovieCard

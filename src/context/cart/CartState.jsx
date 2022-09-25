@@ -4,7 +4,9 @@ import { React, useReducer } from 'react';
 import { toast } from 'react-toastify';
 import CartContext from './CartContext';
 import CartReducer from './CartReducer';
-import { SHOW_HIDE_CART, ADD_TO_CART, REMOVE_ITEM } from '../Types';
+import {
+  SHOW_HIDE_CART, ADD_TO_CART, REMOVE_ITEM, CLEAR_CART,
+} from '../Types';
 
 function CartState({ children }) {
   const initalState = {
@@ -28,6 +30,10 @@ function CartState({ children }) {
     toast.error('Produto removido');
   };
 
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART, payload: [] });
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -36,6 +42,7 @@ function CartState({ children }) {
         addToCart,
         showHideCart,
         removeItem,
+        clearCart,
       }}
     >
       {children}
