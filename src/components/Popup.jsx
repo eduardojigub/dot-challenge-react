@@ -13,17 +13,19 @@ function Popup({ children, trigger }) {
   }
 
   return (trigger) ? (
-    <div className="popup">
-      <div className="popup-inner">
-        { children }
+    <div className="overlay">
+      <div className="popup">
+        <div className="popup-inner">
+          { children }
+        </div>
+        <button
+          type="button"
+          className="close-btn btn btn-primary"
+          onClick={handleClick}
+        >
+          Voltar para a loja
+        </button>
       </div>
-      <button
-        type="button"
-        className="close-btn btn btn-primary"
-        onClick={handleClick}
-      >
-        Voltar para a loja
-      </button>
     </div>
   ) : '';
 }
