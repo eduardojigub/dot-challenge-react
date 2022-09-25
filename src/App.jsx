@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       <Cart />
       <Outlet />
-      <ToastContainer autoClose={500} />
+      <ToastContainer autoClose={1000} />
     </div>
   );
 }

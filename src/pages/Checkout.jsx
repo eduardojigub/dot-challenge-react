@@ -6,6 +6,7 @@ import InputMask from 'react-input-mask';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartContext from '../context/cart/CartContext';
 import CartItem from '../components/CartItem';
+import Popup from '../components/Popup';
 
 function Checkout() {
   const [name, setName] = useState('');
@@ -17,6 +18,7 @@ function Checkout() {
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
   const opts = { format: '%s%v', symbol: 'R$' };
+  const [buttonPopup, setButtonPopup] = useState(false);
   //  const [isValid, setIsValid] = useState(false);
 
   // const checkoutClick = () => {
@@ -63,7 +65,7 @@ function Checkout() {
         <div className="container mt-5">
           <div className="row">
             <div className="col-md-4 order-md-2 mb-4">
-              <h4 className="d-flex justify-content-between align-items-center mb-3">
+              <h4 className="d-flex justify-content-between align-items-center mb-3 mt-5">
                 <span className="text-muted">Carrinho de Compras</span>
               </h4>
               {cartItems.length === 0
@@ -91,7 +93,7 @@ function Checkout() {
               </ul>
             </div>
             <div className="col-md-8 order-md-1">
-              <h4 className="mb-3">Revise seu pedido e finalize sua compra</h4>
+              <h4 className="mb-3 mt-5">Revise seu pedido e finalize sua compra</h4>
               <form className="needs-validation" noValidate>
                 <div className="row">
                   <div className="col-md-6 mb-3">
@@ -215,6 +217,7 @@ function Checkout() {
                 <button
                   className="btn btn-primary btn-lg btn-block"
                   type="submit"
+                  onClick={() => setButtonPopup(true)}
                 >
                   Finalizar Compra
                 </button>
@@ -222,6 +225,14 @@ function Checkout() {
             </div>
           </div>
         </div>
+        <Popup trigger={buttonPopup}>
+          <h3>
+            Parabéns
+            {' '}
+            {name}
+          </h3>
+          <h4>Sua compra foi finalizada com sucesso!</h4>
+        </Popup>
       </div>
     </div>
   );
