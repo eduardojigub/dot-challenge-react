@@ -45,7 +45,12 @@ function Cart() {
             </div>
           </div>
           <Link to="/checkout">
-            <button type="button" className="btn btn-primary" aria-label="Finalizar Compra">
+            <button
+              type="button"
+              className="btn btn-primary mt-2"
+              aria-label="Finalizar Compra"
+              onClick={showHideCart}
+            >
               Fazer Pagamento
             </button>
           </Link>
