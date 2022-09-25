@@ -15,15 +15,15 @@ function Popup({ children, trigger }) {
   return (trigger) ? (
     <div className="popup">
       <div className="popup-inner">
-        <button
-          type="button"
-          className="close-btn"
-          onClick={handleClick}
-        >
-          Voltar para a loja
-        </button>
         { children }
       </div>
+      <button
+        type="button"
+        className="close-btn btn btn-primary"
+        onClick={handleClick}
+      >
+        Voltar para a loja
+      </button>
     </div>
   ) : '';
 }

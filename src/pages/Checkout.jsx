@@ -226,12 +226,12 @@ function Checkout() {
           </div>
         </div>
         <Popup trigger={buttonPopup}>
-          <h3>
+          <h4>
             Parabéns
             {' '}
             {name}
-          </h3>
-          <h4>Sua compra foi finalizada com sucesso!</h4>
+          </h4>
+          <h5>Sua compra foi finalizada com sucesso!</h5>
         </Popup>
       </div>
     </div>
