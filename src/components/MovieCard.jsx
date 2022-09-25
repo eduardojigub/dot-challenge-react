@@ -41,7 +41,7 @@ function MovieCard({
           </Typography>
         </Box>
       </CardContent>
-      <CardActions>
+      <CardActions style={{ justifyContent: 'center' }}>
         <Button
           onClick={() => addToCart(movie)}
           variant="contained"
