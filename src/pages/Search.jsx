@@ -12,12 +12,14 @@ function Search() {
   const [searchParams] = useSearchParams();
 
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const query = searchParams.get('q');
 
   const getSearchedMovies = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
     setMovies(data.results);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -33,18 +35,15 @@ function Search() {
         {query}
       </Typography>
       <Grid mt={5} container spacing={3}>
-        {movies.length === 0 ? (
-          <Skeletons />
-        ) : (
-          movies.map((movie) => (
-            <Grid item xs={12} sm={6} md={4} lg={2} key={movie.id}>
-              <MovieCard
-                key={movie.id}
-                movie={movie}
-              />
-            </Grid>
-          ))
-        )}
+        {isLoading && <Skeletons />}
+        {movies.map((movie) => (
+          <Grid item xs={12} sm={6} md={4} lg={2} key={movie.id}>
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+            />
+          </Grid>
+        ))}
       </Grid>
     </Container>
   );
