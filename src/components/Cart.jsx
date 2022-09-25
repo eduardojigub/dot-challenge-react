@@ -51,7 +51,7 @@ function Cart() {
               aria-label="Finalizar Compra"
               onClick={showHideCart}
             >
-              Fazer Pagamento
+              Ir para o checkout
             </button>
           </Link>
         </div>

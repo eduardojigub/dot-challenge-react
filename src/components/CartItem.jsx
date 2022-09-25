@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
 import './CartItem.css';
+import { FaTrash } from 'react-icons/fa';
 import formatCurrency from 'format-currency';
 import CartContext from '../context/cart/CartContext';
 
@@ -12,7 +13,7 @@ function CartItem({ item }) {
   return (
     <li className="CartItem__item">
       <img src={API_IMG + item.poster_path} alt="" />
-      <div>
+      <div className="CartItem__nameandprice">
         {item.title}
         {' '}
         {formatCurrency(`${item.vote_count.toFixed(2) * 0.01}`, opts)}
@@ -22,7 +23,7 @@ function CartItem({ item }) {
         className="CartItem__button"
         onClick={() => removeItem(item.id)}
       >
-        Remover
+        <FaTrash />
       </button>
     </li>
   );
