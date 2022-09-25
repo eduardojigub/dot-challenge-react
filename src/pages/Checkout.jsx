@@ -20,9 +20,10 @@ function Checkout() {
   const opts = { format: '%s%v', symbol: 'R$' };
   const [buttonPopup, setButtonPopup] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const { cartItems } = useContext(CartContext);
 
   const checkoutClick = () => {
-    if (name.length > 1) {
+    if (name.length > 1 && cartItems.length > 0) {
       return setIsValid(false);
     }
     return setIsValid(true);
@@ -61,8 +62,6 @@ function Checkout() {
     setButtonPopup(true);
   };
 
-  const { cartItems } = useContext(CartContext);
-
   return (
     <div>
       <div className="maincontainer">
@@ -98,9 +97,10 @@ function Checkout() {
             </div>
             <div className="col-md-8 order-md-1">
               <h4 className="mb-3 mt-5">Revise seu pedido e finalize sua compra</h4>
+              <small className="form-text text-muted">Você precisa ter pelo menos 1 produto no carrinho para finalizar seu pedido</small>
               <form onSubmit={handleSubmit} className="needs-validation" noValidate>
                 <div className="row">
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-6 mb-3 mt-2">
                     <label htmlFor="validationCustom01" className="form-label">Nome Completo</label>
                     <input
                       type="text"
