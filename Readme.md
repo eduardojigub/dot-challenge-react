@@ -6,6 +6,9 @@
 - Create functional components in React
 - Use props and handling functions to interact with the page. 
 - Use Material UI/Boostrap and Pure CSS for design (Skeletons, Navbar, Forms, grid, etc)
+- Using Masks on input field
+- Form Validation
+- Display responsive on mobile
 - Request an api from TMDB https://www.themoviedb.org/
 
 
